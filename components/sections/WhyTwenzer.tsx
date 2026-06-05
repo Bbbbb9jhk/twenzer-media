@@ -20,6 +20,10 @@ const cards = [
     title: "محرك توزيع",
     desc: "نظام محتوى مبني ليتوسّع معك.",
   },
+  {
+    title: "داش بورد مخصوصة",
+    desc: "لوحة تحكم خاصة بيك تتابع منها أرقامك ونتايجك أول بأول.",
+  },
 ];
 
 export function WhyTwenzer() {
@@ -45,7 +49,7 @@ export function WhyTwenzer() {
           ليه Twenzer؟
         </motion.h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {cards.map((card, i) => (
             <motion.div
               key={i}

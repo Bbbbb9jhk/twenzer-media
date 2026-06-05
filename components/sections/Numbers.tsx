@@ -5,7 +5,7 @@ import { Counter } from "@/components/Counter";
 
 const stats = [
   { to: 360, label: "فيديو شهرياً" },
-  { to: 520, label: "فيديو شهرياً" },
+  { to: 560, label: "فيديو شهرياً" },
   { to: 720, label: "فيديو شهرياً" },
 ];
 
@@ -16,7 +16,7 @@ export function Numbers() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7 }}
         >
           <span className="eyebrow">Scale</span>
@@ -27,7 +27,7 @@ export function Numbers() {
           dir="ltr"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           BUILT TO SCALE
@@ -40,7 +40,7 @@ export function Numbers() {
               className="border-t border-olive-mid/30 pt-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.6, delay: 0.15 * i }}
             >
               <div className="font-display text-burn text-7xl md:text-8xl text-glow" dir="ltr">

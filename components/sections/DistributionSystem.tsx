@@ -4,14 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BRANCHES = [
-  { ar: "بناء العلامة الشخصية", en: "Personal Branding", angle: -90 },
+  { ar: "توزيع المحتوى", en: "Content Distribution", angle: -90 },
+  { ar: "بناء العلامة الشخصية", en: "Personal Branding", angle: -30 },
   { ar: "مونتاج الفيديو", en: "Video Editing", angle: 30 },
-  { ar: "تهكير الخوارزميات", en: "Algorithm Hacking", angle: 150 },
+  { ar: "تهكير الخوارزميات", en: "Algorithm Hacking", angle: 90 },
+  { ar: "مدير حساب مخصص", en: "Account Manager", angle: 150 },
+  { ar: "لوحة تحكم", en: "Dashboard", angle: 210 },
 ];
 
 export function DistributionSystem() {
   const [open, setOpen] = useState(false);
-  const R = 210;
+  const R = 232;
 
   return (
     <section id="system" className="relative overflow-hidden bg-ink py-28 md:py-36">
@@ -21,16 +24,16 @@ export function DistributionSystem() {
           <h2 className="mt-5 font-ar text-3xl font-bold text-cream md:text-5xl">
             نظام توزيع المحتوى
           </h2>
-          <p className="mt-3 font-ar text-olive-light">مرّر الماوس أو اضغط على المركز</p>
+          <p className="mt-4 font-ar text-sm text-olive-light">مرّر الماوس أو اضغط على المركز</p>
         </div>
 
         <div
-          className="relative mx-auto flex h-[460px] w-full max-w-xl items-center justify-center"
+          className="relative mx-auto flex h-[560px] w-full max-w-2xl items-center justify-center md:h-[620px]"
           onMouseEnter={() => setOpen(true)}
           onMouseLeave={() => setOpen(false)}
         >
           {/* connecting lines */}
-          <svg className="absolute inset-0 h-full w-full" viewBox="-250 -230 500 460" aria-hidden="true">
+          <svg className="absolute inset-0 h-full w-full" viewBox="-300 -300 600 600" aria-hidden="true">
             <AnimatePresence>
               {open &&
                 BRANCHES.map((b) => {
@@ -65,19 +68,19 @@ export function DistributionSystem() {
                     key={b.en}
                     className="absolute"
                     style={{ left: "50%", top: "50%" }}
-                    initial={{ x: -60, y: -30, scale: 0, opacity: 0 }}
+                    initial={{ x: -65, y: -28, scale: 0, opacity: 0 }}
                     animate={{
-                      x: Math.cos(rad) * R - 70,
-                      y: Math.sin(rad) * R - 30,
+                      x: Math.cos(rad) * R - 65,
+                      y: Math.sin(rad) * R - 28,
                       scale: 1,
                       opacity: 1,
                     }}
-                    exit={{ x: -60, y: -30, scale: 0, opacity: 0 }}
-                    transition={{ duration: 0.45, delay: i * 0.06, ease: [0.2, 0.7, 0.3, 1] }}
+                    exit={{ x: -65, y: -28, scale: 0, opacity: 0 }}
+                    transition={{ duration: 0.45, delay: i * 0.05, ease: [0.2, 0.7, 0.3, 1] }}
                   >
-                    <div className="w-[140px] rounded-xl border border-burn/40 bg-cream/[0.05] px-4 py-3 text-center backdrop-blur">
-                      <div className="font-ar text-sm font-bold text-cream">{b.ar}</div>
-                      <div className="mt-1 font-en text-[10px] uppercase tracking-wider text-burn">
+                    <div className="w-[130px] rounded-xl border border-burn/40 bg-cream/[0.05] px-3 py-3 text-center backdrop-blur">
+                      <div className="font-ar text-sm font-bold leading-snug text-cream">{b.ar}</div>
+                      <div className="mt-1 font-en text-[9px] uppercase tracking-wider text-burn">
                         {b.en}
                       </div>
                     </div>
@@ -86,23 +89,34 @@ export function DistributionSystem() {
               })}
           </AnimatePresence>
 
-          {/* center node */}
+          {/* center node with rotating frame */}
           <motion.button
             onClick={() => setOpen((v) => !v)}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            animate={{ boxShadow: open ? "0 0 70px -8px rgba(217,112,53,0.8)" : "0 0 40px -10px rgba(217,112,53,0.5)" }}
-            className="relative z-10 flex h-40 w-40 flex-col items-center justify-center rounded-full border border-burn bg-ink text-center"
+            animate={{
+              boxShadow: open
+                ? "0 0 70px -8px rgba(217,112,53,0.8)"
+                : "0 0 40px -10px rgba(217,112,53,0.5)",
+            }}
+            className="relative z-10 flex h-44 w-44 flex-col items-center justify-center rounded-full border border-burn/60 bg-ink text-center"
             aria-expanded={open}
           >
-            <span className="font-ar text-sm font-bold leading-tight text-cream">
+            {/* rotating dashed ring */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-[-12px] rounded-full border-2 border-dashed border-burn/60 animate-[spin_18s_linear_infinite]"
+            />
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-[-22px] rounded-full border border-burn/20 animate-[spin_30s_linear_infinite_reverse]"
+            />
+            <span className="font-ar text-base font-bold leading-tight text-cream">
               نظام توزيع
               <br />
               المحتوى
             </span>
-            <span className="mt-1 font-en text-[9px] uppercase tracking-widest text-burn">
-              Core
-            </span>
+            <span className="mt-1 font-en text-[9px] uppercase tracking-widest text-burn">Core</span>
           </motion.button>
         </div>
       </div>

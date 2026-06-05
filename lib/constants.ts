@@ -7,6 +7,12 @@ export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURICo
   "مرحباً Twenzer Media، عايز أعرف أكتر عن نظام توزيع المحتوى."
 )}`;
 
+// Contact + social links — placeholders; update with the agency's real handles.
+export const CONTACT_EMAIL = "hello@twenzer.media";
+export const INSTAGRAM_URL = "https://instagram.com/twenzer.media";
+export const TIKTOK_URL = "https://tiktok.com/@twenzer.media";
+export const YOUTUBE_URL = "https://youtube.com/@twenzer.media";
+
 export const PLATFORMS = [
   "TikTok",
   "Instagram Reels",

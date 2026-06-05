@@ -13,11 +13,15 @@ export function Counter({
   duration?: number;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, { once: false, margin: "-80px" });
   const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) {
+      // reset so it counts up again next time it scrolls into view
+      setValue(0);
+      return;
+    }
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
