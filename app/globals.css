@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --olive-deep: #2a3020;
+  --olive-dark: #3d4a28;
+  --olive-mid: #5c6b35;
+  --olive-light: #8a9f55;
+  --olive-pale: #c8d4a0;
+  --burn-dark: #c45c22;
+  --burn: #d97035;
+  --burn-light: #e8905c;
+  --cream: #f5f2ea;
+  --black: #111209;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--burn);
+  color: var(--cream);
+}
+
+/* ---------- type helpers (from brand.css) ---------- */
+.eyebrow {
+  font-family: var(--font-dmsans), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--burn);
+  direction: ltr;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  background: currentColor;
+}
+
+.display {
+  font-family: var(--font-bebas), sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 0.9;
+}
+.kicker-ar {
+  font-family: var(--font-cairo), sans-serif;
+  font-weight: 700;
+  line-height: 1.18;
+}
+.serif-it {
+  font-family: var(--font-playfair), serif;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.hi {
+  color: var(--burn);
+}
+.hi-light {
+  color: var(--burn-light);
+}
+
+/* marching chevrons */
+.mark path {
+  stroke: currentColor;
+  stroke-width: 11;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.c-burn {
+  color: var(--burn);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mark path {
+    animation: march 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) both;
+  }
+  .hero-mark path:nth-child(1) { animation-delay: 0.05s; }
+  .hero-mark path:nth-child(2) { animation-delay: 0.16s; }
+  .hero-mark path:nth-child(3) { animation-delay: 0.27s; }
+  .hero-mark path:nth-child(4) { animation-delay: 0.38s; }
+  .hero-mark path:nth-child(5) { animation-delay: 0.49s; }
+}
+@keyframes march {
+  from { transform: translateX(-16px); }
+  to { transform: translateX(0); }
+}
+
+/* glow utility */
+.glow-burn {
+  box-shadow: 0 0 60px -10px rgba(217, 112, 53, 0.55);
+}
+.text-glow {
+  text-shadow: 0 0 36px rgba(217, 112, 53, 0.45);
+}
+
+/* hide scrollbar for marquees */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* flowing distribution arrows */
+.arrow-flow {
+  stroke-dasharray: 13 11;
+  animation: flow 0.7s linear infinite;
+}
+@keyframes flow {
+  to { stroke-dashoffset: -24; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arrow-flow { animation: none; }
+}
